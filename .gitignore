@@ -1,0 +1,60 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/
+.yarn-cache/
+.yarn-integrity
+
+# Build outputs and framework caches
+dist/
+build/
+.astro/
+.cache/
+.tmp/
+.temp/
+
+# Environment and local configuration
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs and runtime files
+*.log
+logs/
+pids/
+*.pid
+*.pid.lock
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Test and coverage output
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.iml
+
+# Operating system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# TypeScript incremental build info
+*.tsbuildinfo
+
+# Temporary archives and local exports
+*.tgz
+*.tar.gz
+*.zip

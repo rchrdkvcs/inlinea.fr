@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  { number: '01', title: 'Design produit', text: 'Identité visuelle, interfaces et prototypes pensés pour être clairs, cohérents et agréables à utiliser.', icon: 'spark' },
+  { number: '02', title: 'Sites & applications', text: 'Landing pages, sites vitrines et applications web rapides, accessibles et simples à maintenir.', icon: 'code' },
+  { number: '03', title: 'Outils sur mesure', text: 'Automatisations, tableaux de bord et outils métier — de Google Sheets à une solution entièrement dédiée.', icon: 'grid' },
+];
+
+const steps = [
+  ['Cadrer', 'On clarifie votre besoin, vos utilisateurs et ce qui fera vraiment la différence.'],
+  ['Concevoir', 'On transforme les idées en une expérience tangible, testable et soignée.'],
+  ['Construire', 'On développe, on affine et on met en ligne une solution fiable.'],
+];
+---
+<Layout title="Inlinea — Design & développement à Rennes" description="Studio indépendant basé à Rennes. Design, développement de sites, applications et outils numériques sur mesure.">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Inlinea, retour en haut">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i></span>
+        <span>inlinea</span>
+      </a>
+      <nav aria-label="Navigation principale">
+        <a class="nav-link" href="#services">Services</a>
+        <a class="nav-link" href="#approche">Approche</a>
+      </nav>
+      <a class="button button-primary header-cta" href="mailto:bonjour@inlinea.fr">Parler de votre projet <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="location-pill"><span class="status-dot"></span> Studio indépendant à Rennes</div>
+          <h1>Des idées bien pensées.<br /><span>Des produits bien construits.</span></h1>
+          <p>Inlinea imagine et développe des sites, applications et outils numériques utiles — avec le même soin porté au fond, à la forme et aux détails.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="mailto:bonjour@inlinea.fr">Démarrer un projet <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="#services">Découvrir nos services <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="trust-line"><span>Design</span><i></i><span>Développement</span><i></i><span>Outils métier</span></div>
+        </div>
+
+        <div class="visual" aria-hidden="true">
+          <div class="orb orb-one"></div><div class="orb orb-two"></div>
+          <div class="window">
+            <div class="window-top"><span></span><span></span><span></span><div class="window-url">inlinea.fr</div></div>
+            <div class="window-body">
+              <div class="mini-sidebar"><div class="mini-logo"></div><i></i><i></i><i></i><i></i></div>
+              <div class="mini-main">
+                <div class="mini-bar"><span></span><button></button></div>
+                <div class="mini-heading"></div><div class="mini-sub"></div>
+                <div class="mini-cards"><div><b>78%</b><span></span></div><div><b>24</b><span></span></div><div><b>+18%</b><span></span></div></div>
+                <div class="mini-chart"><div class="chart-grid"></div><svg viewBox="0 0 320 90" preserveAspectRatio="none"><path d="M0 74 C42 78 52 38 92 51 S145 69 170 39 S219 10 245 33 S286 40 320 8" fill="none" stroke="#6b5cf6" stroke-width="3"/><path d="M0 74 C42 78 52 38 92 51 S145 69 170 39 S219 10 245 33 S286 40 320 8 L320 90 L0 90Z" fill="url(#g)"/><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#7769f7" stop-opacity=".22"/><stop offset="1" stop-color="#7769f7" stop-opacity="0"/></linearGradient></defs></svg></div>
+              </div>
+            </div>
+          </div>
+          <div class="floating-card float-a"><span class="float-icon">✓</span><div><b>Projet publié</b><small>À l’instant</small></div></div>
+          <div class="floating-card float-b"><span class="avatar">IN</span><div><b>Tout est prêt.</b><small>Simple, rapide, efficace.</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div><span class="eyebrow"><i></i> Ce que nous faisons</span><h2 class="section-title">Du premier trait<br />à la mise en ligne.</h2></div>
+          <p class="section-copy">Un interlocuteur unique pour transformer une idée en un produit concret, sans complexité inutile ni compromis sur la qualité.</p>
+        </div>
+        <div class="service-grid">
+          {services.map((service) => (
+            <article class="service-card">
+              <div class="card-top"><span class="service-icon">
+                {service.icon === 'spark' && <svg viewBox="0 0 24 24"><path d="M12 3l1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7L12 3Z"/><path d="M19 16l.7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7L19 16Z"/></svg>}
+                {service.icon === 'code' && <svg viewBox="0 0 24 24"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M14 5l-4 14"/></svg>}
+                {service.icon === 'grid' && <svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>}
+              </span><span class="service-number">{service.number}</span></div>
+              <h3>{service.title}</h3><p>{service.text}</p>
+              <div class="tags">{service.number === '01' ? <><span>UI/UX</span><span>Identité</span><span>Prototype</span></> : service.number === '02' ? <><span>Web</span><span>Mobile</span><span>No-code</span></> : <><span>Automatisation</span><span>Google Sheets</span><span>API</span></>}</div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="approach section" id="approche">
+      <div class="container approach-grid">
+        <div class="approach-sticky"><span class="eyebrow"><i></i> Notre manière de faire</span><h2 class="section-title">Simple dans le process.<br />Exigeant dans le résultat.</h2><p class="section-copy">Pas de jargon ni d’effet tunnel. Vous savez où va le projet, pourquoi, et ce qui arrive ensuite.</p></div>
+        <ol class="step-list">
+          {steps.map(([title, text], index) => <li><span class="step-num">0{index + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section class="local-section">
+      <div class="container local-card">
+        <div class="map-art" aria-hidden="true"><div class="map-lines"></div><span class="map-pin"><i></i></span><span class="map-label">Rennes</span></div>
+        <div class="local-copy"><span class="eyebrow"><i></i> Ancré ici, ouvert partout</span><h2>Basé à Rennes,<br />en Bretagne.</h2><p>On travaille avec des entreprises d’ici et d’ailleurs. À distance quand c’est plus simple, autour d’un café quand c’est mieux.</p><a href="mailto:bonjour@inlinea.fr">Nous rencontrer à Rennes <span aria-hidden="true">→</span></a></div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container cta-card">
+        <span class="cta-kicker">Une idée en tête ?</span><h2>Construisons quelque chose<br />d’utile et de remarquable.</h2><p>Parlez-nous de votre projet, même s’il tient encore sur un coin de carnet.</p><a class="button cta-button" href="mailto:bonjour@inlinea.fr">Écrire à bonjour@inlinea.fr <span aria-hidden="true">↗</span></a>
+        <div class="cta-ring ring-one"></div><div class="cta-ring ring-two"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><a class="brand" href="#top"><span class="brand-mark"><i></i><i></i></span><span>inlinea</span></a><p>Design & développement numérique<br /><span>Rennes, Bretagne</span></p><div class="footer-right"><a href="mailto:bonjour@inlinea.fr">bonjour@inlinea.fr</a><span>© {new Date().getFullYear()} Inlinea</span></div></div></footer>
+</Layout>
+
+<style>
+  .site-header { position: absolute; z-index: 20; inset: 0 0 auto; height: 78px; }
+  .nav-wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 720; letter-spacing: -.035em; }
+  .brand-mark { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; gap: 4px; border-radius: 8px; background: var(--accent); box-shadow: 0 4px 12px #5b4df52c; }
+  .brand-mark i { display: block; width: 3px; height: 13px; border-radius: 2px; background: white; transform: skewY(-18deg); }
+  nav { display: flex; gap: 34px; margin-inline-start: 95px; }
+  .nav-link { color: var(--muted); font-size: 14px; font-weight: 520; transition: color 150ms; }
+  .nav-link:hover { color: var(--text); }
+  .header-cta { min-height: 40px; border-radius: 10px; padding-inline: 15px; }
+  .hero { position: relative; overflow: hidden; min-height: 790px; padding: 175px 0 108px; border-bottom: 1px solid var(--border); background-image: linear-gradient(#efeff3 1px, transparent 1px), linear-gradient(90deg, #efeff3 1px, transparent 1px); background-size: 44px 44px; }
+  .hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 38% 48%, transparent 0, var(--bg) 68%); pointer-events: none; }
+  .hero-glow { position: absolute; z-index: 1; width: 640px; height: 640px; inset: 30px -170px auto auto; border-radius: 50%; background: #e8e5ff; filter: blur(100px); opacity: .7; }
+  .hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1fr) minmax(430px, .9fr); align-items: center; gap: 75px; }
+  .location-pill { width: fit-content; display: flex; align-items: center; gap: 9px; padding: 8px 11px; border: 1px solid var(--border); border-radius: 999px; background: rgba(255,255,255,.72); color: var(--muted); font-size: 12px; font-weight: 560; box-shadow: 0 2px 8px #20202a08; }
+  .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #42a66f; box-shadow: 0 0 0 3px #42a66f1f; }
+  h1 { max-width: 710px; margin: 28px 0 0; font-size: clamp(48px, 5.3vw, 72px); line-height: 1.035; letter-spacing: -.058em; text-wrap: balance; }
+  h1 span { color: #777780; }
+  .hero-copy > p { max-width: 600px; margin: 26px 0 0; color: var(--muted); font-size: 18px; line-height: 1.65; text-wrap: pretty; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  .trust-line { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 42px; color: var(--subtle); font-size: 12px; font-weight: 550; }
+  .trust-line i { width: 3px; height: 3px; background: #c3c3ca; border-radius: 50%; }
+  .visual { position: relative; height: 430px; }
+  .window { position: absolute; z-index: 2; width: 520px; top: 33px; inset-inline-start: 0; overflow: hidden; border: 1px solid #dad8e4; border-radius: 17px; background: white; box-shadow: 0 32px 80px #38315e22, 0 5px 16px #38315e12; transform: perspective(1200px) rotateY(-6deg) rotateX(2deg); }
+  .window-top { height: 36px; display: flex; align-items: center; gap: 5px; padding: 0 12px; background: #fafafd; border-bottom: 1px solid #eeeef2; }
+  .window-top > span { width: 6px; height: 6px; border-radius: 50%; background: #d4d4db; }
+  .window-url { position: absolute; inset-inline-start: 50%; transform: translateX(-50%); width: 125px; padding: 4px; text-align: center; border-radius: 5px; background: #f0f0f4; color: #9999a2; font-size: 7px; }
+  .window-body { height: 310px; display: flex; }
+  .mini-sidebar { width: 57px; padding: 17px 13px; border-inline-end: 1px solid #eeeeF2; background: #fafafd; }
+  .mini-logo { width: 17px; height: 17px; margin-bottom: 24px; border-radius: 5px; background: var(--accent); }
+  .mini-sidebar i { display: block; width: 27px; height: 4px; margin-bottom: 14px; border-radius: 4px; background: #dedee5; }
+  .mini-main { flex: 1; padding: 19px 24px; }
+  .mini-bar { display: flex; justify-content: space-between; margin-bottom: 29px; }.mini-bar span { width: 60px; height: 5px; border-radius: 3px; background: #dcdce3; }.mini-bar button { width: 43px; height: 15px; border: 0; border-radius: 4px; background: var(--accent); }
+  .mini-heading { width: 105px; height: 10px; border-radius: 5px; background: #2f2f37; }.mini-sub { width: 165px; height: 5px; margin-top: 8px; border-radius: 3px; background: #dedee5; }
+  .mini-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 9px; margin-top: 21px; }.mini-cards div { height: 62px; padding: 12px; border: 1px solid #ececf1; border-radius: 8px; }.mini-cards b { display:block; font-size: 12px; }.mini-cards span { display:block; width: 37px; height:4px; margin-top:9px; background:#dedee5; border-radius:2px; }
+  .mini-chart { position: relative; height: 100px; margin-top: 11px; overflow:hidden; border: 1px solid #ececf1; border-radius: 8px; }.mini-chart svg { position:absolute; inset:auto 9px 8px; width:calc(100% - 18px); height:75%; }.chart-grid { position:absolute; inset:0; background: repeating-linear-gradient(0deg, transparent 0 24px, #f0f0f4 25px); }
+  .floating-card { position: absolute; z-index: 4; display: flex; align-items: center; gap: 11px; padding: 12px 14px; border: 1px solid #e5e4ea; border-radius: 12px; background: rgba(255,255,255,.94); box-shadow: 0 14px 35px #2f29451b; backdrop-filter: blur(8px); }
+  .floating-card b,.floating-card small { display:block; white-space:nowrap; }.floating-card b { font-size:10px; }.floating-card small { margin-top:3px; color:#9898a1; font-size:8px; }.float-a { inset: 12px -26px auto auto; }.float-b { inset: auto auto 1px -37px; }
+  .float-icon,.avatar { width:27px; height:27px; display:grid; place-items:center; border-radius:8px; font-size:11px; font-weight:700; }.float-icon { color:#39895e; background:#e7f7ed; }.avatar { color:white; background:var(--accent); }
+  .orb { position:absolute; border-radius:50%; filter:blur(1px); }.orb-one { width:85px;height:85px;top:0;right:35px;background:#ddd8ff; }.orb-two { width:56px;height:56px;bottom:28px;left:10px;background:#f0cfee; }
+  .section { padding: 126px 0; }
+  .section-head { display:flex; justify-content:space-between; align-items:flex-end; gap:60px; }.section-head .section-copy { max-width:410px; margin-bottom:4px; }
+  .eyebrow i { width:17px;height:1px;background:currentColor; }
+  .service-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:17px; margin-top:64px; }
+  .service-card { min-height:310px; padding:25px; border:1px solid var(--border); border-radius:16px; background:var(--surface); box-shadow:0 1px 2px #18182005; transition:transform 200ms cubic-bezier(.2,0,0,1), box-shadow 200ms; }
+  .service-card:hover { transform:translateY(-4px); box-shadow:0 18px 42px #1818200c; }.card-top {display:flex;align-items:center;justify-content:space-between}.service-icon {width:44px;height:44px;display:grid;place-items:center;border-radius:12px;background:var(--accent-soft);color:var(--accent)}.service-icon svg {width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.service-number {color:#aaaab2;font-size:11px;font-weight:650;letter-spacing:.08em}.service-card h3 {margin:35px 0 0;font-size:20px;letter-spacing:-.025em}.service-card p {margin:12px 0 0;color:var(--muted);font-size:14px;line-height:1.65;text-wrap:pretty}.tags {display:flex;flex-wrap:wrap;gap:6px;margin-top:24px}.tags span {padding:5px 8px;border-radius:6px;background:#f5f5f7;color:#777780;font-size:10px;font-weight:550}
+  .approach { background:white; border-block:1px solid var(--border); }.approach-grid {display:grid;grid-template-columns:1fr 1fr;gap:110px}.approach-sticky {align-self:start;position:sticky;top:50px}.step-list {list-style:none;margin:0;padding:0}.step-list li {display:grid;grid-template-columns:50px 1fr;gap:18px;padding:10px 0 40px;margin-bottom:28px;border-bottom:1px solid var(--border)}.step-list li:last-child {margin-bottom:0}.step-num {width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700}.step-list h3 {margin:3px 0 0;font-size:24px;letter-spacing:-.035em}.step-list p {max-width:380px;margin:11px 0 0;color:var(--muted);font-size:15px;line-height:1.65}
+  .local-section {padding:90px 0}.local-card {min-height:430px;display:grid;grid-template-columns:1.15fr .85fr;overflow:hidden;border:1px solid var(--border);border-radius:20px;background:white}.map-art {position:relative;overflow:hidden;background:#f3f2fa}.map-lines {position:absolute;inset:-30%;opacity:.6;background:repeating-radial-gradient(ellipse at 50% 50%,transparent 0 28px,#d7d4e8 29px,#d7d4e8 30px,transparent 31px 56px);transform:rotate(-12deg) scale(1.2)}.map-art::after {content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent,#ded9ff55)}.map-pin {position:absolute;z-index:2;top:48%;left:52%;width:38px;height:38px;display:grid;place-items:center;border-radius:50% 50% 50% 0;background:var(--accent);box-shadow:0 10px 24px #5b4df54f;transform:translate(-50%,-50%) rotate(-45deg)}.map-pin i {width:9px;height:9px;border:3px solid white;border-radius:50%}.map-label {position:absolute;z-index:2;top:57%;left:54%;padding:6px 9px;border-radius:6px;background:white;box-shadow:0 5px 18px #27223820;font-size:10px;font-weight:700}.local-copy {padding:64px 55px}.local-copy h2 {margin:16px 0 0;font-size:42px;line-height:1.1;letter-spacing:-.045em}.local-copy p {margin:20px 0 0;color:var(--muted);font-size:15px;line-height:1.7;text-wrap:pretty}.local-copy a {display:inline-flex;gap:8px;margin-top:28px;color:var(--accent);font-size:13px;font-weight:650}.local-copy a:hover span {transform:translateX(3px)}.local-copy a span {transition:transform 150ms}
+  .cta-section {padding:25px 0 105px}.cta-card {position:relative;overflow:hidden;padding:83px 40px;text-align:center;border-radius:22px;background:var(--accent);color:white;box-shadow:0 25px 60px #5b4df52d}.cta-kicker {font-size:13px;font-weight:650;opacity:.72}.cta-card h2 {position:relative;z-index:2;margin:16px 0 0;font-size:clamp(36px,5vw,58px);line-height:1.08;letter-spacing:-.05em;text-wrap:balance}.cta-card p {position:relative;z-index:2;margin:20px auto 0;font-size:16px;opacity:.78}.cta-button {position:relative;z-index:2;margin-top:31px;background:white;color:#302989}.cta-button:hover {background:#f4f2ff}.cta-ring {position:absolute;border:1px solid #ffffff24;border-radius:50%}.ring-one {width:420px;height:420px;left:-210px;top:-220px}.ring-two {width:570px;height:570px;right:-290px;bottom:-350px}
+  footer {padding:42px 0;background:white;border-top:1px solid var(--border)}.footer-inner {display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center}.footer-inner p {margin:0;color:var(--muted);font-size:12px;line-height:1.7}.footer-inner p span {color:var(--subtle)}.footer-right {display:flex;align-items:flex-end;flex-direction:column;gap:8px;color:var(--subtle);font-size:11px}.footer-right a {color:var(--text);font-size:12px;font-weight:600}
+  @media (max-width: 1000px) { nav {display:none}.hero-grid {grid-template-columns:1fr}.hero {padding-bottom:80px}.hero-copy {max-width:720px}.visual {width:min(590px,100%);margin:10px auto 0}.service-grid {grid-template-columns:1fr 1fr}.service-card:last-child {grid-column:span 2}.approach-grid {gap:60px}.local-copy {padding:50px 38px} }
+  @media (max-width: 680px) { .site-header {height:68px}.header-cta {font-size:0}.header-cta::before {content:'Nous contacter';font-size:13px}.header-cta span {display:none}.hero {min-height:auto;padding:130px 0 68px}.hero-grid {gap:45px}h1 {font-size:44px}.hero-copy>p {font-size:16px}.hero-actions {flex-direction:column;align-items:stretch}.visual {height:305px}.window {width:430px;transform:scale(.73);transform-origin:top left}.float-a {right:-4px;top:-5px}.float-b {bottom:0;left:5px}.section {padding:84px 0}.section-head {display:block}.section-head .section-copy {margin-top:20px}.service-grid {grid-template-columns:1fr;margin-top:42px}.service-card:last-child {grid-column:auto}.approach-grid {grid-template-columns:1fr;gap:50px}.approach-sticky {position:static}.local-section {padding:60px 0}.local-card {grid-template-columns:1fr}.map-art {min-height:280px}.local-copy {padding:40px 28px}.local-copy h2 {font-size:36px}.cta-section {padding:10px 0 70px}.cta-card {padding:65px 20px}.cta-card h2 br {display:none}.footer-inner {grid-template-columns:1fr 1fr;gap:30px}.footer-inner>p {display:none}.footer-right {align-items:flex-end} }
+</style>
