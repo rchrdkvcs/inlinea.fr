@@ -1,2 +1,6 @@
+# Single-package workspace used by Cloudflare Pages.
+packages:
+  - '.'
+
 allowBuilds:
   esbuild: true
