@@ -1,14 +1,29 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 const { title, description } = Astro.props;
 ---
+
 <!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#fbfbfd" />
+    <meta name="theme-color" content="#ffffff" />
+    <link
+      rel="preload"
+      href="/fonts/bricolage-grotesque-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/ibm-plex-mono-semibold-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={Astro.url} />
     <meta property="og:title" content={title} />
@@ -17,5 +32,7 @@ const { title, description } = Astro.props;
     <meta property="og:locale" content="fr_FR" />
     <title>{title}</title>
   </head>
-  <body><slot /></body>
+  <body>
+    <slot />
+  </body>
 </html>
