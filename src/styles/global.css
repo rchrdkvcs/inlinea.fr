@@ -55,7 +55,7 @@
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 24px;
+  scroll-padding-top: 88px;
 }
 body {
   margin: 0;
@@ -174,11 +174,36 @@ p {
   transform: translateY(0);
 }
 .site-header {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 20;
   height: 64px;
   background: white;
   border-bottom: 1px solid var(--border);
+}
+
+/* Keep the paper grain behind content, without adding a fixed overlay. */
+.hero,
+.section,
+.contact,
+.expertise-strip,
+footer {
+  position: relative;
+  isolation: isolate;
+}
+.hero::before,
+.section::before,
+.contact::before,
+.expertise-strip::before,
+footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url("/paper-grain.svg") repeat;
+  background-size: 180px 180px;
+  opacity: 0.075;
 }
 .nav-wrap {
   display: flex;
