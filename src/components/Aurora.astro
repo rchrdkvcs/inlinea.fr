@@ -22,11 +22,11 @@
           float wave = sin(p.x * 2.5 + time * .18 + n * .13) * .19;
           wave += sin(p.x * 4.2 - time * .12 + n * .08) * .08;
           float ribbon = abs(p.y - wave + .16 - n * .012);
-          glow += .0025 / (ribbon + .018);
-          fine += .0003 / (ribbon + .003);
+          glow += .0015 / (ribbon + .010);
+          fine += .00065 / (ribbon + .002);
         }
         float edge = smoothstep(0., .16, uv.y) * (1. - smoothstep(.75, 1., uv.y));
-        float strength = clamp(glow * .34 + fine * .12, 0., .65) * edge;
+        float strength = clamp(glow * .26 + fine * .38, 0., .65) * edge;
         vec3 blue = mix(vec3(.08,.30,.92), vec3(.35,.65,1.), uv.x);
         gl_FragColor = vec4(blue, strength);
       }`;

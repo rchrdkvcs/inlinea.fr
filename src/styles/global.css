@@ -146,28 +146,18 @@ p {
   max-width: 720px;
   margin-top: 64px;
 }
-.content-block h2,
-.content-cta h2 {
+.content-block h2 {
   margin-bottom: 14px;
   font-size: clamp(26px, 4vw, 36px);
   line-height: 1.15;
 }
-.content-block p,
-.content-cta p {
+.content-block p {
   color: var(--muted);
   font-size: 18px;
   line-height: 1.7;
 }
-.content-cta {
+.detail-contact {
   margin-top: 88px;
-  padding: clamp(28px, 6vw, 56px);
-  border-radius: 16px;
-  background: var(--night);
-  color: white;
-}
-.content-cta p {
-  margin-bottom: 26px;
-  color: #d4def0;
 }
 .eyebrow {
   font-family: var(--font-mono);

@@ -3,7 +3,7 @@
 .home .hero { overflow: clip; }
 .home .hero-inner { position: relative; z-index: 1; }
 .aurora { position: absolute; inset: 0 0 auto; height: 760px; pointer-events: none; background: radial-gradient(ellipse at 80% 45%, #d8e7ff 0, transparent 55%); }
-.aurora canvas { width: 100%; height: 100%; opacity: .8; }
+.aurora canvas { width: 100%; height: 100%; opacity: .95; }
 .home .hero h1 { max-width: 1050px; margin-inline: auto; }
 .home .hero-description { color: #344966; }
 .motion-toggle { position: absolute; z-index: 2; inset: 12px 20px auto auto; border: 0; background: #ffffffb8; border-radius: 4px; padding: 10px; color: var(--muted); font: 9px var(--font-mono); cursor: pointer; }
@@ -33,6 +33,7 @@
 .process-thread path { fill: none; stroke: #7d9fce; stroke-width: 1.5; stroke-dasharray: 7 8; }
 .home .process-list { display: grid; gap: 150px; position: relative; }
 .home .process-list li { display: block; width: 85%; padding: 28px; background: #fff; border: 1px solid #c8d9f1; border-radius: 12px; color: var(--text); box-shadow: 0 8px 24px #1027500a; transform: rotate(-3deg); transition: transform 250ms var(--ease-out); }
+.home .process-list li:last-child { padding-bottom: 28px; }
 .home .process-list li:nth-child(2) { justify-self: end; transform: rotate(3deg); background: #e1edff; }
 .home .process-list li:nth-child(3) { transform: rotate(-2deg); background: #fffef6; }
 .home .process-list li::before { display: none; }
@@ -63,21 +64,6 @@
   .faq-item[open]::details-content { height: auto; }
 }
 .home .contact { background: white; color: var(--text); padding-block: 85px; overflow: visible; }
-.home .contact-inner { position: relative; border: 1px solid #b9cce7; padding: 64px 24px; background: radial-gradient(ellipse at 20% 0%, #e5eeff, transparent 65%); }
-.home .contact-inner::before { content: ''; position: absolute; inset: 0 auto 0 50%; border-left: 1px dashed #cbd9ed; z-index: 0; pointer-events: none; }
-.home .contact-inner > :not(.crop) { position: relative; }
-.home .contact-star { color: var(--accent); margin-bottom: 20px; }
-.home .contact-star svg { width: 36px; height: 36px; }
-.home .contact .eyebrow { color: var(--accent); }
-.home .contact h2 { font-size: clamp(35px, 4.4vw, 58px); }
-.home .contact p:not(.eyebrow) { color: var(--muted); }
-.contact-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
-.home .contact .button { margin-top: 0; }
-.crop { position: absolute; width: 21px; height: 21px; color: var(--accent); }
-.crop::before, .crop::after { content: ''; position: absolute; background: currentColor; }
-.crop::before { width: 21px; height: 1px; top: 10px; left: 0; }
-.crop::after { width: 1px; height: 21px; left: 10px; top: 0; }
-.crop-tl { top: -11px; left: -11px; }.crop-tr { top: -11px; right: -11px; }.crop-bl { bottom: -11px; left: -11px; }.crop-br { bottom: -11px; right: -11px; }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .home .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 28px #1027500c; }
   .home .process-list li:hover { transform: rotate(0deg) translateY(-4px); }
@@ -86,6 +72,7 @@
 @media (max-width: 1000px) {
   .home .approach-grid { gap: 35px; grid-template-columns: .9fr 1.1fr; }
   .home .process-list li { width: 94%; padding: 24px; }
+  .home .process-list li:last-child { padding-bottom: 24px; }
   .home .service-grid { gap: 16px; }
 }
 @media (max-width: 850px) {
@@ -112,10 +99,25 @@
   .faq-item summary { font-size: 18px; gap: 12px; padding-block: 24px; }
   .faq-answer { padding-inline: 28px 10px; font-size: 15px; }
   .home .contact { padding-block: 50px; }
-  .home .contact-inner { padding: 45px 20px; }
-  .contact-actions { flex-direction: column; }
 }
 @media (prefers-reduced-motion: reduce) {
   .home .button:active, .home .service-card:hover { transform: none; }
   .faq-item::details-content { transition: none; }
+}
+
+/* A single quiet sequence replaces the nested mock interfaces. */
+.home .blueprint { background-image: none; padding: 22px 32px 32px; }
+.idea-path { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; margin: 0; padding: 32px 0 0; }
+.idea-path li { position: relative; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.idea-path li:not(:last-child)::after { content: ''; position: absolute; top: 27px; left: calc(50% + 42px); width: calc(100% - 84px); border-top: 1px solid #b8cdef; }
+.idea-path-icon { display: grid; place-items: center; width: 54px; height: 54px; color: var(--accent); }
+.idea-path-number { font: 10px var(--font-mono); color: var(--muted); letter-spacing: .04em; }
+.idea-path strong { font-size: 21px; font-weight: 550; letter-spacing: -.03em; }
+@media (max-width: 600px) {
+  .home .blueprint { padding: 18px; }
+  .idea-path { grid-template-columns: 1fr; gap: 28px; padding-top: 24px; }
+  .idea-path li { display: grid; grid-template-columns: 44px 1fr; gap: 5px 14px; text-align: start; }
+  .idea-path-icon { grid-row: 1 / 3; width: 44px; height: 44px; }
+  .idea-path li:not(:last-child)::after { top: 48px; left: 22px; width: 0; height: 22px; border-top: none; border-left: 1px solid #b8cdef; }
+  .idea-path strong { font-size: 20px; }
 }

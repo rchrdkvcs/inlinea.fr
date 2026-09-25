@@ -1,7 +1,8 @@
 ---
+import ContactPanel from "../../components/ContactPanel.astro";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
-import { ArrowLeft, ArrowUpRight } from "@lucide/astro";
+import { ArrowLeft } from "@lucide/astro";
 
 export function getStaticPaths() {
 const services = [
@@ -68,10 +69,8 @@ const { service } = Astro.props;
           <p>{section.text}</p>
         </section>
       ))}
-      <section class="content-cta">
-        <h2>Un projet à Rennes ou ailleurs ?</h2>
-        <p>Parlons de votre besoin et voyons ensemble par où commencer.</p>
-        <a class="button button-primary" href="mailto:bonjour@inlinea.fr">Parlons de votre projet <ArrowUpRight size={18} aria-hidden="true" /></a>
+      <section class="detail-contact" aria-labelledby="contact-title">
+        <ContactPanel title="Un projet à Rennes ou ailleurs ?" description="Parlons de votre besoin et voyons ensemble par où commencer." />
       </section>
     </div>
   </main>

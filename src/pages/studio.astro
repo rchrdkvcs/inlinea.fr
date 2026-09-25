@@ -1,7 +1,7 @@
 ---
+import ContactPanel from "../components/ContactPanel.astro";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-import { ArrowUpRight } from "@lucide/astro";
 const description = "Découvrez Inlinea, studio indépendant de design et développement basé à Rennes. Un interlocuteur unique pour concevoir et développer vos projets numériques.";
 ---
 <Layout title="Le studio Inlinea — Design & développement à Rennes" description={description}>
@@ -14,7 +14,9 @@ const description = "Découvrez Inlinea, studio indépendant de design et dével
       <p class="content-lead">Inlinea est un studio indépendant de design et de développement basé à Rennes. Une structure à taille humaine pour travailler ensemble, simplement.</p>
       <section class="content-block"><h2>Un interlocuteur, du début à la mise en ligne</h2><p>Vous échangez directement avec la personne qui conçoit et développe votre projet. Du cadrage au produit livré, les choix sont expliqués et les retours réguliers.</p></section>
       <section class="content-block"><h2>Ancré à Rennes, ouvert à distance</h2><p>Inlinea accompagne des entreprises d’ici et d’ailleurs. Nous travaillons à distance quand c’est plus simple, et autour d’un café à Rennes quand c’est mieux.</p></section>
-      <section class="content-cta"><h2>Faisons connaissance</h2><p>Vous avez un site, une application ou un outil à concevoir ? Présentez-nous votre idée.</p><a class="button button-primary" href="mailto:bonjour@inlinea.fr">Écrire à Inlinea <ArrowUpRight size={18} aria-hidden="true" /></a></section>
+      <section class="detail-contact" aria-labelledby="contact-title">
+        <ContactPanel title="Faisons connaissance" description="Vous avez un site, une application ou un outil à concevoir ? Présentez-nous votre idée." buttonLabel="Écrire à Inlinea" />
+      </section>
     </div>
   </main>
 

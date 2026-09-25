@@ -1,0 +1,44 @@
+---
+import { Asterisk, ArrowUpRight } from '@lucide/astro';
+interface Props {
+  title: string;
+  description: string;
+  buttonLabel?: string;
+  showStudioLink?: boolean;
+}
+const { title, description, buttonLabel = 'Parlons de votre projet', showStudioLink = false } = Astro.props;
+---
+<div class="contact-panel">
+  <i class="corner tl" aria-hidden="true"></i><i class="corner tr" aria-hidden="true"></i>
+  <i class="corner bl" aria-hidden="true"></i><i class="corner br" aria-hidden="true"></i>
+  <Asterisk class="panel-star" size={36} aria-hidden="true" />
+  <p class="panel-eyebrow">La suite commence avec vous</p>
+  <h2 id="contact-title"><slot name="title">{title}</slot></h2>
+  <p class="panel-description">{description}</p>
+  <div class="panel-actions">
+    {showStudioLink && <a class="button button-secondary" href="/studio/">Découvrir le studio <ArrowUpRight size={18} aria-hidden="true" /></a>}
+    <a class="button button-primary" href="mailto:bonjour@inlinea.fr">{buttonLabel} <ArrowUpRight size={18} aria-hidden="true" /></a>
+  </div>
+  <a class="panel-email" href="mailto:bonjour@inlinea.fr">bonjour@inlinea.fr</a>
+</div>
+<style>
+  .contact-panel { position: relative; border: 1px solid #b9cce7; padding: 64px 28px; background: radial-gradient(ellipse at 20% 0%, #e5eeff, transparent 65%), white; color: var(--text); text-align: center; }
+  .panel-star { display: block; margin: 0 auto 20px; color: var(--accent); }
+  .contact-panel .panel-eyebrow { margin: 0; color: var(--accent); font: 11px/1.6 var(--font-mono); text-transform: uppercase; letter-spacing: .07em; }
+  .contact-panel h2 { margin: 21px 0 0; font-size: clamp(32px, 4.4vw, 58px); line-height: 1.12; }
+  .contact-panel .panel-description { max-width: 580px; margin: 23px auto 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+  .panel-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  .contact-panel .button { margin: 0; }
+  .panel-email { display: block; width: fit-content; margin: 14px auto 0; padding: 8px; font-size: 12px; }
+  .corner { position: absolute; width: 21px; height: 21px; color: var(--accent); }
+  .corner::before, .corner::after { content: ''; position: absolute; background: currentColor; }
+  .corner::before { width: 21px; height: 1px; top: 10px; left: 0; }
+  .corner::after { width: 1px; height: 21px; left: 10px; top: 0; }
+  .tl { top: -11px; left: -11px; }.tr { top: -11px; right: -11px; }.bl { bottom: -11px; left: -11px; }.br { bottom: -11px; right: -11px; }
+  @media (hover: hover) { .panel-email:hover { text-decoration: underline; } }
+  @media (max-width: 600px) {
+    .contact-panel { padding: 45px 20px; }
+    .contact-panel .panel-description { font-size: 14px; }
+    .panel-actions { flex-direction: column; }
+  }
+</style>

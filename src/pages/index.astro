@@ -1,4 +1,5 @@
 ---
+import ContactPanel from "../components/ContactPanel.astro";
 import Aurora from "../components/Aurora.astro";
 import "../styles/home.css";
 import Layout from "../layouts/Layout.astro";
@@ -6,7 +7,6 @@ import Header from "../components/Header.astro";
 import {
   ArrowUpRight,
   ArrowDown,
-  ArrowRight,
   Asterisk,
   MousePointer2,
   Check,
@@ -117,118 +117,16 @@ const steps = [
         </div>
         <div
           class="blueprint"
-          role="img"
-          aria-label="De votre idée au produit : design, développement et mise en ligne, réunis par Inlinea."
         >
           <div class="blueprint-meta">
             <span>INLINEA / DE L’IDÉE AU RÉEL</span>
             <span>DESIGN + CODE + UN PEU D’AUDACE</span>
           </div>
-          <div class="blueprint-flow" aria-hidden="true">
-            <div class="idea-note">
-              <span class="mono">01 / LE DÉCLIC</span>
-              <Lightbulb size={62} aria-hidden="true" />
-              <strong>
-                Et si on faisait
-                <br />
-                autrement ?
-              </strong>
-              <span class="note-scribble">Tout commence ici.</span>
-            </div>
-            <span class="flow-arrow">
-              <ArrowRight size={40} strokeWidth={1.5} aria-hidden="true" />
-            </span>
-            <div class="build-stack">
-              <div class="stack-offset"></div>
-              <div class="build-card">
-                <div class="panel-heading">
-                  <span>02 / LA FABRIQUE</span>
-                  <span>
-                    <Asterisk size={20} aria-hidden="true" />
-                  </span>
-                </div>
-                <div class="design-row">
-                  <span class="design-symbol">Aa</span>
-                  <div class="swatches">
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                  </div>
-                  <span class="cursor">
-                    <MousePointer2 size={30} aria-hidden="true" />
-                  </span>
-                </div>
-                <div class="code-lines">
-                  <span>
-                    <b>&lt;idée&gt;</b>
-                  </span>
-                  <span>
-                    &nbsp; design: <em>intentionnel</em>;
-                  </span>
-                  <span>
-                    &nbsp; code: <em>bien construit</em>;
-                  </span>
-                  <span>
-                    <b>&lt;/produit&gt;</b>
-                  </span>
-                </div>
-                <div class="build-footer">
-                  <span>Design + Développement</span>
-                  <span>
-                    <ArrowUpRight size={16} aria-hidden="true" />
-                  </span>
-                </div>
-              </div>
-            </div>
-            <span class="flow-arrow">
-              <ArrowRight size={40} strokeWidth={1.5} aria-hidden="true" />
-            </span>
-            <div class="product-window">
-              <div class="product-toolbar">
-                <div>
-                  <i></i>
-                  <i></i>
-                  <i></i>
-                </div>
-                <span>votre-projet.fr</span>
-                <span>
-                  <ArrowUpRight size={16} aria-hidden="true" />
-                </span>
-              </div>
-              <div class="product-content">
-                <span class="product-label">03 / VOTRE PROCHAIN CHAPITRE</span>
-                <div class="product-composition">
-                  <div class="product-headline">
-                    Ça prend
-                    <br />
-                    forme<span>.</span>
-                    <div class="mock-cta">
-                      Et ça change tout.{" "}
-                      <ArrowUpRight size={16} aria-hidden="true" />
-                    </div>
-                  </div>
-                  <div class="product-sculpture">
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                  </div>
-                </div>
-                <div class="product-bottom">
-                  <span>Conçu avec soin.</span>
-                  <span>Prêt pour la suite.</span>
-                </div>
-              </div>
-              <div class="live-label">
-                <span></span> Votre idée, en ligne.
-              </div>
-            </div>
-          </div>
-          <div class="blueprint-baseline" aria-hidden="true">
-            <span>UNE VISION CLAIRE</span>
-            <span>UN INTERLOCUTEUR UNIQUE</span>
-            <span>UN PRODUIT QUI VOUS RESSEMBLE</span>
-          </div>
+          <ol class="idea-path">
+            <li><span class="idea-path-icon"><Lightbulb size={30} aria-hidden="true" /></span><span class="idea-path-number">01 / IMAGINER</span><strong>Votre idée.</strong></li>
+            <li><span class="idea-path-icon"><PenTool size={30} aria-hidden="true" /></span><span class="idea-path-number">02 / CONSTRUIRE</span><strong>Notre savoir-faire.</strong></li>
+            <li><span class="idea-path-icon"><Check size={30} aria-hidden="true" /></span><span class="idea-path-number">03 / LANCER</span><strong>Un produit qui vit.</strong></li>
+          </ol>
         </div>
       </div>
     </section>
@@ -464,30 +362,10 @@ const steps = [
       </div>
     </section>
     <section class="contact" id="contact" aria-labelledby="contact-title">
-      <div class="container contact-inner">
-        <i class="crop crop-tl" aria-hidden="true"></i><i class="crop crop-tr" aria-hidden="true"></i><i class="crop crop-bl" aria-hidden="true"></i><i class="crop crop-br" aria-hidden="true"></i>
-        <span class="contact-star" aria-hidden="true">
-          <Asterisk size={20} aria-hidden="true" />
-        </span>
-        <p class="eyebrow">La suite commence avec vous</p>
-        <h2 id="contact-title">
-          Une idée en tête ?<br />
-          Faisons-en quelque chose.
-        </h2>
-        <p>
-          Un brief précis ou une intuition sur un coin de carnet.
-          <br />
-          C’est tout ce qu’il faut pour commencer.
-        </p>
-        <div class="contact-actions">
-        <a class="button button-secondary" href="/studio/">Découvrir le studio <ArrowUpRight size={18} aria-hidden="true" /></a>
-        <a class="button button-primary" href="mailto:bonjour@inlinea.fr">
-          Parlons de votre projet <ArrowUpRight size={18} aria-hidden="true" />
-        </a>
-        </div>
-        <a class="contact-email" href="mailto:bonjour@inlinea.fr">
-          bonjour@inlinea.fr
-        </a>
+      <div class="container">
+        <ContactPanel title="Une idée en tête ? Faisons-en quelque chose." description="Un brief précis ou une intuition sur un coin de carnet. C’est tout ce qu’il faut pour commencer." showStudioLink>
+          <Fragment slot="title">Une idée en tête ?<br />Faisons-en quelque chose.</Fragment>
+        </ContactPanel>
       </div>
     </section>
   </main>
