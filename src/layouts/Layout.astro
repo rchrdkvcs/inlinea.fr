@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Footer from "../components/Footer.astro";
 const {
   title,
   description,
@@ -59,5 +60,6 @@ const imageUrl = new URL(image, siteUrl);
   </head>
   <body id="top">
     <slot />
+    <Footer />
   </body>
 </html>

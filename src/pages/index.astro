@@ -2,12 +2,10 @@
 import Aurora from "../components/Aurora.astro";
 import "../styles/home.css";
 import Layout from "../layouts/Layout.astro";
-import Brand from "../components/Brand.astro";
 import Header from "../components/Header.astro";
 import {
   ArrowUpRight,
   ArrowDown,
-  ArrowUp,
   ArrowRight,
   Asterisk,
   MousePointer2,
@@ -362,7 +360,7 @@ const steps = [
             </p>
           </div>
           <a
-            class="text-link text-link-on-dark"
+            class="text-link"
             href="mailto:bonjour@inlinea.fr"
           >
             Discutons de votre idée{" "}
@@ -493,26 +491,33 @@ const steps = [
       </div>
     </section>
   </main>
-  <footer>
-    <div class="container footer-main">
-      <Brand />
-      <p>
-        Des idées claires. Des produits bien construits.
-        <br />
-        <span>Design & développement · Rennes, Bretagne</span>
-      </p>
-      <a class="text-link" href="#top">
-        Retour en haut <ArrowUp size={18} aria-hidden="true" />
-      </a>
-    </div>
-    <div class="container footer-bottom">
-      <span>© {new Date().getFullYear()} Inlinea</span>
-      <span>Indépendant par choix. Impliqué par nature.</span>
-    </div>
-  </footer>
+
 </Layout>
 
 <script>
+  const board = document.querySelector<HTMLElement>('.process-board');
+  const thread = board?.querySelector('svg');
+  const path = thread?.querySelector('path');
+  if (board && thread && path) {
+    const cards = Array.from(board.querySelectorAll<HTMLElement>('li'));
+    const updateThread = () => {
+      const width = board.clientWidth;
+      thread.setAttribute('viewBox', `0 0 ${width} ${board.clientHeight}`);
+      path.setAttribute('d', cards.slice(0, -1).map((card, index) => {
+        const next = cards[index + 1];
+        const x1 = card.offsetLeft + card.offsetWidth / 2 + 12;
+        const y1 = card.offsetTop + card.offsetHeight + 20;
+        const x2 = next.offsetLeft + next.offsetWidth / 2 + 12;
+        const y2 = next.offsetTop + 20;
+        const middle = (y1 + y2) / 2;
+        const bend = index % 2 === 0 ? width - 15 : 15;
+        return `M ${x1} ${y1} C ${x1} ${middle}, ${bend} ${middle}, ${x2} ${y2}`;
+      }).join(' '));
+    };
+    const resize = new ResizeObserver(updateThread);
+    resize.observe(board);
+    cards.forEach(card => resize.observe(card));
+  }
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const elements = document.querySelectorAll<HTMLElement>('[data-reveal]');
   const observer = new IntersectionObserver(entries => {

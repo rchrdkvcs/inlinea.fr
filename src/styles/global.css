@@ -274,9 +274,9 @@ footer::before {
   opacity: 0.075;
 }
 .nav-wrap {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: center;
-  justify-content: space-between;
   height: 63px;
   gap: 24px;
 }
@@ -1697,4 +1697,12 @@ footer {
   *::after {
     transition: none !important;
   }
+}
+
+/* Equal outer columns keep navigation centered regardless of CTA width. */
+.nav-wrap > .brand { justify-self: start; }
+.nav-wrap > .desktop-nav { justify-self: center; white-space: nowrap; gap: 4px; }
+.nav-wrap > .header-actions { grid-column: 3; justify-self: end; }
+@media (max-width: 850px) {
+  .nav-wrap > .header-actions { grid-column: 2 / 4; }
 }

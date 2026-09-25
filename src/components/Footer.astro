@@ -1,0 +1,65 @@
+---
+import Brand from './Brand.astro';
+import { ArrowUp, ArrowUpRight, Mail } from '@lucide/astro';
+const expertises = [
+  { label: 'Design produit', href: '/expertises/design-produit/' },
+  { label: 'Sites & applications', href: '/expertises/sites-applications-web/' },
+  { label: 'Outils sur mesure', href: '/expertises/outils-sur-mesure/' },
+];
+---
+<footer class="site-footer">
+  <div class="container footer-frame">
+    <div class="footer-grid">
+      <div class="footer-identity">
+        <Brand />
+        <p>Des idées claires.<br />Des produits bien construits.</p>
+        <span class="footer-location">Studio indépendant · Rennes, Bretagne</span>
+        <a class="footer-email" href="mailto:bonjour@inlinea.fr"><Mail size={17} aria-hidden="true" />bonjour@inlinea.fr<ArrowUpRight size={16} aria-hidden="true" /></a>
+      </div>
+      <nav class="footer-links" aria-label="Expertises du studio">
+        <h2>Expertises</h2>
+        {expertises.map(link => <a href={link.href}>{link.label}</a>)}
+      </nav>
+      <nav class="footer-links" aria-label="Liens du studio">
+        <h2>Inlinea</h2>
+        <a href="/studio/">Le studio</a>
+        <a href="/#approche">Notre approche</a>
+        <a href="/#contact">Parlons de votre projet <ArrowUpRight size={15} aria-hidden="true" /></a>
+      </nav>
+    </div>
+    <div class="footer-colophon">
+      <span>© {new Date().getFullYear()} Inlinea</span>
+      <span>Indépendant par choix. Impliqué par nature.</span>
+      <a href="#top">Retour en haut <ArrowUp size={15} aria-hidden="true" /></a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { padding: 0; border-top: 1px solid var(--border); background: radial-gradient(ellipse at 20% 0%, #eaf1ff 0, transparent 60%), #fff; }
+  .footer-frame { border-inline: 1px solid var(--border); }
+  .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 48px; padding: 56px 36px; }
+  .footer-identity > p { margin-top: 24px; font: 15px/1.8 var(--font-mono); color: var(--muted); }
+  .footer-location { display: block; margin-top: 14px; font-size: 12px; color: var(--muted); }
+  .footer-email { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 24px; border: 1px solid var(--border); border-radius: 6px; background: #ffffff9c; padding: 10px 12px; font-size: 13px; }
+  .footer-email svg { color: var(--accent); }
+  .footer-links { display: flex; flex-direction: column; align-items: start; }
+  .footer-links h2 { margin: 0 0 16px; font: 12px/1.5 var(--font-mono); color: var(--muted); letter-spacing: 0; }
+  .footer-links a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding-block: 10px; font-size: 14px; line-height: 1.5; }
+  .footer-colophon { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; border-top: 1px solid var(--border); padding: 16px 36px; color: var(--muted); font-size: 11px; }
+  .footer-colophon a { justify-self: end; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+  @media (hover: hover) { a:hover { color: var(--accent); } }
+  @media (max-width: 1000px) { .footer-grid { gap: 28px; padding-inline: 24px; grid-template-columns: 1.3fr 1fr 1fr; } }
+  @media (max-width: 760px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; padding: 36px 24px; gap: 36px 24px; }
+    .footer-identity { grid-column: 1 / -1; }
+    .footer-colophon { grid-template-columns: 1fr auto; padding: 16px 24px; gap: 8px 16px; }
+    .footer-colophon > span:nth-child(2) { grid-row: 2; grid-column: 1 / -1; }
+    .footer-colophon a { grid-column: 2; grid-row: 1; }
+  }
+  @media (max-width: 380px) {
+    .footer-grid { padding-inline: 16px; gap: 28px 16px; }
+    .footer-links a { font-size: 13px; }
+    .footer-colophon { padding-inline: 16px; }
+  }
+</style>
