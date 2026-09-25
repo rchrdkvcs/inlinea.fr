@@ -23,6 +23,7 @@ const services = [
     name: "Design produit",
     text: "Une identité reconnaissable, des interfaces claires et une expérience qui donne envie de revenir.",
     tags: ["Identité visuelle", "UI/UX", "Prototypage"],
+    href: "/expertises/design-produit/",
   },
   {
     number: "02",
@@ -31,6 +32,7 @@ const services = [
     name: "Sites & applications",
     text: "Du site vitrine à l’application web, des produits rapides, accessibles et simples à faire évoluer.",
     tags: ["Sites web", "Applications", "Développement"],
+    href: "/expertises/sites-applications-web/",
   },
   {
     number: "03",
@@ -39,6 +41,7 @@ const services = [
     name: "Outils sur mesure",
     text: "Des automatisations et des outils métier adaptés à votre quotidien. Pas l’inverse.",
     tags: ["Automatisation", "Google Sheets", "API"],
+    href: "/expertises/outils-sur-mesure/",
   },
 ];
 const steps = [
@@ -67,8 +70,8 @@ const steps = [
 ---
 
 <Layout
-  title="Inlinea — Studio de design & développement à Rennes"
-  description="De l’idée à la mise en ligne. Inlinea, studio indépendant à Rennes, conçoit et développe vos sites, applications et outils numériques sur mesure."
+  title="Studio design & développement web à Rennes | Inlinea"
+  description="Inlinea est un studio indépendant à Rennes. Design produit, création de sites et d’applications web, outils numériques sur mesure et automatisation."
 >
   <a class="skip-link" href="#main">
     Aller au contenu
@@ -84,7 +87,7 @@ const steps = [
           Studio indépendant · Rennes, Bretagne
         </p>
         <h1 id="hero-title">
-          De l’idée au produit.
+          Studio de design & développement web à Rennes.
           <br />
           <span>Sans détour.</span>
         </h1>
@@ -306,7 +309,7 @@ const steps = [
                 <p class="eyebrow">
                   {service.number} / {service.name}
                 </p>
-                <h3>{service.title}</h3>
+                <h3><a href={service.href}>{service.name}</a></h3>
                 <p>{service.text}</p>
                 <ul class="tags">
                   {service.tags.map((tag) => (

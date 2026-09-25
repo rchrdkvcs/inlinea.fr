@@ -1,0 +1,79 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import { ArrowLeft, ArrowUpRight } from "@lucide/astro";
+
+const services = [
+  {
+    slug: "design-produit",
+    title: "Design produit et UX/UI à Rennes | Inlinea",
+    description: "Inlinea accompagne la conception de produits numériques : identité visuelle, interfaces UI/UX et prototypage, du cadrage aux premières maquettes.",
+    h1: "Design produit & interfaces numériques",
+    intro: "Une identité reconnaissable, des interfaces claires et une expérience qui donne envie de revenir.",
+    sections: [
+      { title: "Concevoir une expérience cohérente", text: "Le design relie votre identité, les besoins de vos utilisateurs et les objectifs du produit. Nous travaillons les interfaces pour rendre les parcours compréhensibles et donner une forme juste à votre idée." },
+      { title: "Du cadrage au prototype", text: "Nous clarifions le besoin, explorons des pistes et donnons forme au projet avec des prototypes. Vous pouvez vous projeter, partager vos retours et prendre les décisions avant le développement." },
+      { title: "Un design pensé avec le développement", text: "Design et code avancent ensemble chez Inlinea. Cette continuité aide à concevoir des interfaces réalisables, cohérentes et prêtes à évoluer avec le produit." },
+    ],
+    tags: ["Identité visuelle", "UI/UX", "Prototypage"],
+  },
+  {
+    slug: "sites-applications-web",
+    title: "Création de sites et applications web à Rennes | Inlinea",
+    description: "Studio indépendant à Rennes, Inlinea conçoit et développe des sites web et applications sur mesure, de la réflexion à la mise en ligne.",
+    h1: "Création de sites & applications web",
+    intro: "Du site vitrine à l’application web, des produits rapides, accessibles et simples à faire évoluer.",
+    sections: [
+      { title: "Un site adapté à votre projet", text: "Nous partons de votre besoin, de vos utilisateurs et de vos contraintes pour définir la bonne réponse : un site web, une application ou une première version de produit." },
+      { title: "Conception et développement réunis", text: "Inlinea prend en charge le cadrage, la conception des interfaces, le développement, les tests et la mise en ligne. Vous échangez directement avec la personne qui fait avancer le projet." },
+      { title: "Une base claire pour la suite", text: "Nous visons des produits accessibles, rapides et simples à faire évoluer. Les choix sont expliqués au fil du projet pour que vous puissiez prendre en main la solution livrée." },
+    ],
+    tags: ["Sites web", "Applications web", "Développement sur mesure"],
+  },
+  {
+    slug: "outils-sur-mesure",
+    title: "Outils métier et automatisation sur mesure | Inlinea Rennes",
+    description: "Inlinea conçoit à Rennes des outils numériques et automatisations adaptés à votre quotidien, dont des solutions autour de Google Sheets et des API.",
+    h1: "Outils métier & automatisation sur mesure",
+    intro: "Des automatisations et des outils métier adaptés à votre quotidien. Pas l’inverse.",
+    sections: [
+      { title: "Partir de votre quotidien", text: "Nous cherchons à comprendre les tâches répétitives, les échanges de données et les points de friction qui ralentissent votre activité avant de choisir une solution." },
+      { title: "Relier les bons outils", text: "Selon le besoin, une automatisation, une API ou un outil construit autour de Google Sheets peut simplifier un processus. La réponse est définie avec vous, à partir de vos usages et contraintes." },
+      { title: "Garder la solution compréhensible", text: "L’objectif est de réduire la friction sans ajouter de complexité inutile. Nous construisons une solution que vous pouvez utiliser et faire évoluer." },
+    ],
+    tags: ["Automatisation", "Google Sheets", "API"],
+  },
+];
+
+export function getStaticPaths() {
+  return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
+}
+
+const { service } = Astro.props;
+---
+
+<Layout title={service.title} description={service.description}>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <Header />
+  <main id="main" class="content-page">
+    <div class="container content-page-inner">
+      <a class="text-link content-back" href="/#services"><ArrowLeft size={17} aria-hidden="true" /> Toutes les expertises</a>
+      <p class="eyebrow">Inlinea · Studio indépendant à Rennes</p>
+      <h1>{service.h1}</h1>
+      <p class="content-lead">{service.intro}</p>
+      <div class="content-tags">{service.tags.map((tag) => <span>{tag}</span>)}</div>
+      {service.sections.map((section) => (
+        <section class="content-block">
+          <h2>{section.title}</h2>
+          <p>{section.text}</p>
+        </section>
+      ))}
+      <section class="content-cta">
+        <h2>Un projet à Rennes ou ailleurs ?</h2>
+        <p>Parlons de votre besoin et voyons ensemble par où commencer.</p>
+        <a class="button button-primary" href="mailto:bonjour@inlinea.fr">Parlons de votre projet <ArrowUpRight size={18} aria-hidden="true" /></a>
+      </section>
+    </div>
+  </main>
+  <footer><div class="container footer-bottom"><a href="/">Inlinea</a><span>Design & développement · Rennes, Bretagne</span><a href="mailto:bonjour@inlinea.fr">Contact</a></div></footer>
+</Layout>

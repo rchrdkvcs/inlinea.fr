@@ -101,6 +101,74 @@ p {
   width: min(1200px, calc(100% - 80px));
   margin-inline: auto;
 }
+.content-page {
+  min-height: calc(100vh - 140px);
+  padding: clamp(72px, 10vw, 132px) 0 96px;
+  background: var(--surface);
+}
+.content-page-inner {
+  max-width: 900px;
+}
+.content-back {
+  margin-bottom: 56px;
+}
+.content-page .eyebrow {
+  margin-bottom: 18px;
+}
+.content-page h1 {
+  max-width: 850px;
+  font-size: clamp(42px, 7vw, 78px);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+.content-lead {
+  max-width: 740px;
+  margin-top: 26px;
+  color: var(--muted);
+  font-size: clamp(19px, 2.5vw, 25px);
+  line-height: 1.55;
+}
+.content-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+.content-tags span {
+  padding: 9px 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: white;
+  color: var(--muted);
+  font-size: 14px;
+}
+.content-block {
+  max-width: 720px;
+  margin-top: 64px;
+}
+.content-block h2,
+.content-cta h2 {
+  margin-bottom: 14px;
+  font-size: clamp(26px, 4vw, 36px);
+  line-height: 1.15;
+}
+.content-block p,
+.content-cta p {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+.content-cta {
+  margin-top: 88px;
+  padding: clamp(28px, 6vw, 56px);
+  border-radius: 16px;
+  background: var(--night);
+  color: white;
+}
+.content-cta p {
+  margin-bottom: 26px;
+  color: #d4def0;
+}
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 12px;

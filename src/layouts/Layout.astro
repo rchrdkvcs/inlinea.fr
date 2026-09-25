@@ -1,6 +1,14 @@
 ---
 import "../styles/global.css";
-const { title, description } = Astro.props;
+const {
+  title,
+  description,
+  image = "/social-card.svg",
+  type = "website",
+} = Astro.props;
+const siteUrl = Astro.site ?? new URL("https://inlinea.fr");
+const canonical = new URL(Astro.url.pathname, siteUrl);
+const imageUrl = new URL(image, siteUrl);
 ---
 
 <!doctype html>
@@ -25,11 +33,28 @@ const { title, description } = Astro.props;
       crossorigin
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href={Astro.url} />
+    <link rel="canonical" href={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
     <meta property="og:locale" content="fr_FR" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Inlinea" />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Inlinea",
+      url: siteUrl,
+      email: "bonjour@inlinea.fr",
+      description,
+      areaServed: ["Rennes", "Bretagne", "France"],
+      knowsAbout: ["Design produit", "Développement web", "Applications web", "Automatisation"]
+    })} />
     <title>{title}</title>
   </head>
   <body id="top">

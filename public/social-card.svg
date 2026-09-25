@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f4f7fc"/>
+  <path d="M0 0h1200v22H0z" fill="#1554ed"/>
+  <text x="88" y="138" fill="#1554ed" font-family="Arial,sans-serif" font-size="28" font-weight="700" letter-spacing="4">INLINEA · RENNES</text>
+  <text x="88" y="300" fill="#101e39" font-family="Arial,sans-serif" font-size="72" font-weight="700">Design &amp; développement</text>
+  <text x="88" y="392" fill="#101e39" font-family="Arial,sans-serif" font-size="72" font-weight="700">web sur mesure.</text>
+  <text x="88" y="500" fill="#52617a" font-family="Arial,sans-serif" font-size="32">Sites · Applications · Outils numériques</text>
+  <circle cx="1085" cy="510" r="42" fill="#1554ed"/>
+  <path d="M1067 510h36m-15-15 15 15-15 15" fill="none" stroke="#fff" stroke-width="5"/>
+</svg>

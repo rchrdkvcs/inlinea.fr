@@ -2,9 +2,9 @@
 import { ArrowUpRight, Menu, X } from "@lucide/astro";
 import Brand from "./Brand.astro";
 const links = [
-  { href: "#services", label: "Expertises" },
-  { href: "#approche", label: "Notre approche" },
-  { href: "#studio", label: "Le studio" },
+  { href: "/#services", label: "Expertises" },
+  { href: "/#approche", label: "Notre approche" },
+  { href: "/studio/", label: "Le studio" },
 ];
 ---
 
@@ -17,7 +17,7 @@ const links = [
       ))}
     </nav>
     <div class="header-actions">
-      <a class="button button-primary header-cta" href="#contact">
+      <a class="button button-primary header-cta" href="/#contact">
         <span class="header-label-desktop">Parlons de votre projet</span>
         <span class="header-label-mobile">Parlons-en</span>
         <ArrowUpRight size={16} aria-hidden="true" />
