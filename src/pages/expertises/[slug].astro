@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import { ArrowLeft, ArrowUpRight } from "@lucide/astro";
 
+export function getStaticPaths() {
 const services = [
   {
     slug: "design-produit",
@@ -45,7 +46,6 @@ const services = [
   },
 ];
 
-export function getStaticPaths() {
   return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
 }
 

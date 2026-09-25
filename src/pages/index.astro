@@ -1,4 +1,6 @@
 ---
+import Aurora from "../components/Aurora.astro";
+import "../styles/home.css";
 import Layout from "../layouts/Layout.astro";
 import Brand from "../components/Brand.astro";
 import Header from "../components/Header.astro";
@@ -14,6 +16,8 @@ import {
   MessagesSquare,
   PenTool,
   Code2,
+  Pin,
+  Plus,
 } from "@lucide/astro";
 const services = [
   {
@@ -43,6 +47,13 @@ const services = [
     tags: ["Automatisation", "Google Sheets", "API"],
     href: "/expertises/outils-sur-mesure/",
   },
+];
+const faqs = [
+  { question: "Par où commencer si mon idée n’est pas encore précise ?", answer: "Par un premier échange. Parlez-nous de votre activité, de ce que vous souhaitez améliorer et de vos premières idées. Le cadrage sert justement à préciser le besoin et à définir les priorités ensemble." },
+  { question: "Pouvez-vous intervenir sur un site existant ?", answer: "Oui. Repenser une interface, faire évoluer un site ou simplifier un outil fait partie de nos expertises. On commence par regarder l’existant pour déterminer ce qui mérite d’être conservé ou retravaillé." },
+  { question: "Quel budget et quel délai prévoir ?", answer: "Ils dépendent du périmètre, des fonctionnalités et des contenus à préparer. Le premier échange permet de clarifier ces éléments pour vous proposer un cadre adapté à votre projet." },
+  { question: "Comment participe-t-on au projet ?", answer: "Vous échangez directement avec la personne qui conçoit et développe votre produit. Des premières pistes au prototype, puis à la mise en ligne, vos retours guident les décisions à chaque étape." },
+  { question: "Faut-il être à Rennes pour travailler ensemble ?", answer: "Non. Le studio est basé à Rennes et accompagne les entreprises d’ici et d’ailleurs. On peut avancer à distance, ou se retrouver autour d’un café lorsque c’est possible." },
 ];
 const steps = [
   {
@@ -77,8 +88,9 @@ const steps = [
     Aller au contenu
   </a>
   <Header />
-  <main id="main">
+  <main id="main" class="home">
     <section class="hero" aria-labelledby="hero-title">
+      <Aurora />
       <div class="container hero-inner">
         <p class="eyebrow hero-eyebrow">
           <span class="small-cross" aria-hidden="true">
@@ -260,7 +272,7 @@ const steps = [
         </div>
         <div class="service-grid">
           {services.map((service) => (
-            <article class="service-card">
+            <article class="service-card" data-reveal>
               <div class={`service-art art-${service.type}`} aria-hidden="true">
                 {service.type === "design" ? (
                   <>
@@ -309,7 +321,7 @@ const steps = [
                 <p class="eyebrow">
                   {service.number} / {service.name}
                 </p>
-                <h3><a href={service.href}>{service.name}</a></h3>
+                <h3><a href={service.href}>{service.title}<ArrowUpRight size={21} aria-hidden="true" /></a></h3>
                 <p>{service.text}</p>
                 <ul class="tags">
                   {service.tags.map((tag) => (
@@ -357,9 +369,12 @@ const steps = [
             <ArrowUpRight size={18} aria-hidden="true" />
           </a>
         </div>
+        <div class="process-board">
+          <svg class="process-thread" viewBox="0 0 600 1000" preserveAspectRatio="none" aria-hidden="true"><path d="M170 100 C590 130 570 320 360 420 S0 700 250 850" /></svg>
         <ol class="process-list">
           {steps.map((step, index) => (
-            <li>
+            <li data-reveal>
+              <Pin class="process-pin" size={22} aria-hidden="true" />
               <span class="process-number">0{index + 1}</span>
               <div class="process-content">
                 <div class="process-heading">
@@ -376,11 +391,12 @@ const steps = [
             </li>
           ))}
         </ol>
+        </div>
       </div>
     </section>
     <section class="section studio" id="studio" aria-labelledby="studio-title">
       <div class="container studio-grid">
-        <div class="studio-art" aria-hidden="true">
+        <div class="studio-art" data-reveal aria-hidden="true">
           <span class="map-coordinate">48°06′ N — 1°40′ O</span>
           <svg viewBox="0 0 540 370" fill="none">
             <g stroke="currentColor">
@@ -432,8 +448,26 @@ const steps = [
         </div>
       </div>
     </section>
+    <section class="section faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="faq-heading">
+          <p class="eyebrow">04 / Quelques réponses</p>
+          <h2 id="faq-title">Tout commence<br />par une question.</h2>
+          <p class="section-copy">Les premières réponses, juste ici. Pour la suite,<br class="desktop-break" /> écrivez-nous à <a href="mailto:bonjour@inlinea.fr">bonjour@inlinea.fr</a>.</p>
+        </div>
+        <div class="faq-list">
+          {faqs.map((faq, index) => (
+            <details class="faq-item" name="project-faq">
+              <summary><span class="faq-number" aria-hidden="true">0{index + 1}</span><span>{faq.question}</span><Plus size={22} aria-hidden="true" /></summary>
+              <div class="faq-answer"><p>{faq.answer}</p></div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
     <section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="container contact-inner">
+        <i class="crop crop-tl" aria-hidden="true"></i><i class="crop crop-tr" aria-hidden="true"></i><i class="crop crop-bl" aria-hidden="true"></i><i class="crop crop-br" aria-hidden="true"></i>
         <span class="contact-star" aria-hidden="true">
           <Asterisk size={20} aria-hidden="true" />
         </span>
@@ -447,9 +481,12 @@ const steps = [
           <br />
           C’est tout ce qu’il faut pour commencer.
         </p>
-        <a class="button button-white" href="mailto:bonjour@inlinea.fr">
+        <div class="contact-actions">
+        <a class="button button-secondary" href="/studio/">Découvrir le studio <ArrowUpRight size={18} aria-hidden="true" /></a>
+        <a class="button button-primary" href="mailto:bonjour@inlinea.fr">
           Parlons de votre projet <ArrowUpRight size={18} aria-hidden="true" />
         </a>
+        </div>
         <a class="contact-email" href="mailto:bonjour@inlinea.fr">
           bonjour@inlinea.fr
         </a>
@@ -474,3 +511,22 @@ const steps = [
     </div>
   </footer>
 </Layout>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const elements = document.querySelectorAll<HTMLElement>('[data-reveal]');
+  const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      if (!reduce.matches) entry.target.animate([
+        { opacity: 0, translate: '0 18px' },
+        { opacity: 1, translate: '0 0' }
+      ], { duration: 600, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
+      observer.unobserve(entry.target);
+    }
+  }, { threshold: 0.12 });
+  elements.forEach(element => observer.observe(element));
+  reduce.addEventListener('change', () => {
+    if (reduce.matches) elements.forEach(element => element.getAnimations().forEach(animation => animation.cancel()));
+  });
+</script>
