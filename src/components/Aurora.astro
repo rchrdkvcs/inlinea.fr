@@ -5,8 +5,12 @@
   const host = document.querySelector<HTMLElement>('.aurora');
   const canvas = host?.querySelector('canvas');
   const button = document.querySelector<HTMLButtonElement>('.motion-toggle');
-  const gl = canvas?.getContext('webgl', { alpha: true, premultipliedAlpha: false, antialias: false, powerPreference: 'low-power' });
-  if (host && canvas && gl && button) {
+  // WebGL renders into a detached canvas and is copied to a plain sRGB 2D canvas:
+  // an on-screen WebGL layer makes iOS switch the display to EDR, which dims page whites.
+  const source = document.createElement('canvas');
+  const gl = source.getContext('webgl', { alpha: true, premultipliedAlpha: false, antialias: false, powerPreference: 'low-power' });
+  const ctx = canvas?.getContext('2d', { colorSpace: 'srgb' });
+  if (host && canvas && gl && ctx && button) {
     const vertex = `attribute vec2 position; void main(){gl_Position=vec4(position,0.,1.);}`;
     const fragment = `
       precision mediump float;
@@ -61,6 +65,8 @@
       function draw() {
         gl!.uniform1f(time, elapsed);
         gl!.drawArrays(gl!.TRIANGLES, 0, 6);
+        ctx!.clearRect(0, 0, canvas!.width, canvas!.height);
+        ctx!.drawImage(source, 0, 0);
       }
       function tick(now: number) {
         if (now - previous >= 1000 / 30) {
@@ -81,8 +87,8 @@
       const resize = new ResizeObserver(() => {
         const rect = host!.getBoundingClientRect();
         const ratio = Math.min(devicePixelRatio, 1.5);
-        canvas!.width = Math.round(rect.width * ratio);
-        canvas!.height = Math.round(rect.height * ratio);
+        source.width = canvas!.width = Math.round(rect.width * ratio);
+        source.height = canvas!.height = Math.round(rect.height * ratio);
         gl!.viewport(0, 0, canvas!.width, canvas!.height);
         gl!.uniform2f(resolution, canvas!.width, canvas!.height);
         if (!lost) draw();
@@ -98,7 +104,7 @@
         button.textContent = paused ? 'Relancer l’animation' : 'Mettre l’animation en pause';
         sync();
       });
-      canvas.addEventListener('webglcontextlost', () => { lost = true; sync(); });
+      source.addEventListener('webglcontextlost', () => { lost = true; sync(); });
       window.addEventListener('pagehide', (event) => {
         cancelAnimationFrame(frame);
         if (event.persisted) return;
